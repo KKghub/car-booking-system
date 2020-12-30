@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "e0d24dac-5bdc-46ed-8925-9d5b5c02a702",
+		"name": "CarRentalSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cars",
+			"item": [
+				{
+					"name": "List All Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/cars",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Cars by seating capacity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/cars?seating_capacity=5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "seating_capacity",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Car",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"_id\": \"7\",\n\t\"model\": \"Ford\",\n\t\"seating_capacity\": 5,\n\t\"rent_per_day\": 5000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/cars",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Car",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/cars/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"cars",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Car",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rent_per_day\": 9500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/cars/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"cars",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Car",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/cars/7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"cars",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bookings",
+			"item": [
+				{
+					"name": "List Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/bookings",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Bookings by car_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/bookings?car_id=7",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "car_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"_id\": \"777\",\n\t\"car_id\": \"7\",\n\t\"issue_date\": \"20200519\",\n\t\"return_date\": \"20200527\",\n\t\"cust_name\": \"Delzer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/bookings",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/bookings/777",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"bookings",
+								"777"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "availability",
+			"item": [
+				{
+					"name": "Available cars by date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/availability?date=20200520",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"availability"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "20200520"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Available cars by date and seating capacity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/availability?date=20200520&seating_capacity=5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"availability"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "20200520"
+								},
+								{
+									"key": "seating_capacity",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
