@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+require('dotenv').config();
 // const multer = require("multer");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -18,21 +19,26 @@ app.use("/", cars_Router);
 app.use("/", bookings_Router);
 app.use("/", availability_Router);
 
-mongoose.connect(dbConfig.fullUrl, {
-  // user: dbConfig.username,
-  // pass: dbConfig.password,
-  // dbName: dbConfig.db,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-let db = mongoose.connection;
 
-// Added check for DB connection
-if (!db) console.log("Error connecting db");
-else console.log("Db connected successfully");
-// console.log(db.db.listCollections);
+async function main() {
+  try {
+    await mongoose.connect(dbConfig.fullUrl, {
+      // user: dbConfig.username,
+      // pass: dbConfig.password,
+      // dbName: dbConfig.db,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Db connected successfully");
+    
+    const port = process.env.PORT || serverConfig.port;
+    app.listen(port, function (req, res) {
+      console.log("server started on " + port);
+    });
+  } catch (err) {
+    console.log("Error connecting db")
+    console.log(err);
+  }
+}
 
-const port = process.env.PORT || serverConfig.port;
-app.listen(port, function (req, res) {
-  console.log("server started on " + port);
-});
+main();
